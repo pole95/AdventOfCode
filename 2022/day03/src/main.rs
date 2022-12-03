@@ -11,17 +11,6 @@ fn get_priority(c: &char) -> u8 {
 
 fn part1(input: &str) -> u32 {
     let txt = fs::read_to_string(input).unwrap();
-    /*let mut sum: u32 = 0;
-    for line in txt.lines() {
-        let (s1, s2) = line.split_at(line.len() / 2);
-        let s1_set: HashSet<char> = HashSet::from_iter(s1.chars());
-        let s2_set: HashSet<char> = HashSet::from_iter(s2.chars());
-        let inter = s1_set.intersection(&s2_set);
-        for c in inter {
-            sum += get_priority(c) as u32;
-        }
-    }
-    sum*/
     txt.lines()
         .map(|l| l.chars().find(|&c| l.rfind(c).unwrap() >= l.len() / 2))
         .map(|c| get_priority(&c.unwrap()) as u32)
