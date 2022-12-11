@@ -70,7 +70,7 @@ fn parse_operation(line: &str) -> Option<Box<dyn Fn(usize) -> usize>> {
         None
     }
 }
-fn part1(input: &mut Vec<Monkey>) -> usize {
+fn part1(mut input: Vec<Monkey>) -> usize {
     for _ in 0..20 {
         for i in 0..input.len() {
             while input[i].items.len() > 0 {
@@ -87,7 +87,7 @@ fn part1(input: &mut Vec<Monkey>) -> usize {
     input[0].inspected * input[1].inspected
 }
 
-fn part2(input: &mut Vec<Monkey>) -> usize {
+fn part2(mut input: Vec<Monkey>) -> usize {
     let modulo: usize = input.iter().map(|x| x.divisor).product();
     for _ in 0..10000 {
         for i in 0..input.len() {
@@ -116,10 +116,10 @@ fn main() {
     }
 
     let start = Instant::now();
-    let p1 = part1(&mut monkeys2);
+    let p1 = part1(monkeys);
     let end_part1 = Instant::now();
 
-    let p2 = part2(&mut monkeys);
+    let p2 = part2(monkeys2);
     let end_part2 = Instant::now();
     let part1_time = end_part1 - start;
     let part2_time = end_part2 - end_part1;
