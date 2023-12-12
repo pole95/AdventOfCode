@@ -191,3 +191,21 @@ executable Day11
 
     hs-source-dirs:   11
     default-language: Haskell2010
+
+executable Day12
+    main-is:          main.hs
+
+    -- Modules included in this executable, other than Main.
+    -- other-modules:
+
+    -- LANGUAGE extensions used by modules in this package.
+    -- other-extensions:
+    build-depends:
+        base ^>=4.17.2.0,
+        time,
+        split,
+        containers,
+        array
+
+    hs-source-dirs:   12
+    default-language: Haskell2010
