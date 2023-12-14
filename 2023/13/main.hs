@@ -7,7 +7,6 @@ import Data.List (find, transpose)
 import Data.List.Split (splitOn)
 import Data.Maybe (fromJust, fromMaybe)
 import qualified Data.Time as T
-import GHC.Float (int2Double)
 
 loadInput :: String -> IO [String]
 loadInput s = fmap lines (readFile s)

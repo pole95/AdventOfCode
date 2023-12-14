@@ -2,12 +2,10 @@
 
 module Main (main) where
 
-import Data.Bits (Bits (xor))
 import Data.List (elemIndices, findIndices, intercalate, transpose)
 import Data.List.Split (splitOn)
 import qualified Data.Set as S
 import qualified Data.Time as T
-import GHC.RTS.Flags (ProfFlags (startHeapProfileAtStartup))
 
 loadInput :: String -> IO [String]
 loadInput s = fmap lines (readFile s)
