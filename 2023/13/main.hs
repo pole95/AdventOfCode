@@ -18,7 +18,7 @@ reflectionHamming n = sum . map (isReflection n)
        in length $ filter not $ zipWith (==) (reverse l) r
 
 score :: Int -> [String] -> Int
-score diff grid = fromMaybe ((fromJust row) * 100) $ col
+score diff grid = fromMaybe (fromJust row * 100) col
   where
     col = findIdx grid
     row = findIdx $ transpose grid
