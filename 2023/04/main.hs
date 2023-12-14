@@ -1,3 +1,5 @@
+{-# LANGUAGE BangPatterns #-}
+
 module Main (main) where
 
 import Data.Either (fromRight)
@@ -47,15 +49,15 @@ main = do
   inp <- loadInput "04/input.txt"
   s <- T.getCurrentTime
 
-  let parsed = map (fromRight (error "Parser Error") . parse parseLine "") inp
+  let !parsed = map (fromRight (error "Parser Error") . parse parseLine "") inp
   p <- T.getCurrentTime
 
-  let r1 = sum $ map part1 parsed
+  let !r1 = sum $ map part1 parsed
   p1 <- T.getCurrentTime
 
-  let r2 = part2 parsed
+  let !r2 = part2 parsed
   e <- T.getCurrentTime
 
-  putStrLn $ "Parsing Time: " ++ show (1e9 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime p s)) ++ " ns"
-  putStrLn $ "Part 1: " ++ show r1 ++ "; Time: " ++ show (1e9 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime p1 p)) ++ " ns"
-  putStrLn $ "Part 2: " ++ show r2 ++ "; Time: " ++ show (1e9 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime e p1)) ++ " ns"
+  putStrLn $ "Parsing Time: " ++ show (1e9 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime p s)) ++ " ms"
+  putStrLn $ "Part 1: " ++ show r1 ++ "; Time: " ++ show (1e3 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime p1 p)) ++ " ms"
+  putStrLn $ "Part 2: " ++ show r2 ++ "; Time: " ++ show (1e3 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime e p1)) ++ " ms"

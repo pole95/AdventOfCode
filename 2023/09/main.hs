@@ -1,3 +1,5 @@
+{-# LANGUAGE BangPatterns #-}
+
 module Main (main) where
 
 import qualified Data.Time as T
@@ -28,9 +30,9 @@ main = do
   inp <- loadInput "09/input.txt"
   let parsed = map parse inp
   p <- T.getCurrentTime
-  let r1 = part1 parsed
+  let !r1 = part1 parsed
   p1 <- T.getCurrentTime
-  let r2 = part2 parsed
+  let !r2 = part2 parsed
   e <- T.getCurrentTime
-  putStrLn $ "Part 1: " ++ show r1 ++ "; Time: " ++ show (1e9 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime p1 p)) ++ " ns"
-  putStrLn $ "Part 2: " ++ show r2 ++ "; Time: " ++ show (1e9 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime e p1)) ++ " ns"
+  putStrLn $ "Part 1: " ++ show r1 ++ "; Time: " ++ show (1e3 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime p1 p)) ++ " ms"
+  putStrLn $ "Part 2: " ++ show r2 ++ "; Time: " ++ show (1e3 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime e p1)) ++ " ms"

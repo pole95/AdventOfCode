@@ -1,3 +1,5 @@
+{-# LANGUAGE BangPatterns #-}
+
 module Main (main) where
 
 import Control.Applicative ((<|>))
@@ -35,10 +37,10 @@ main = do
   grids <- splitOn [""] <$> loadInput "13/input.txt"
 
   p <- T.getCurrentTime
-  let r1 = part1 grids
+  let !r1 = part1 grids
   p1 <- T.getCurrentTime
-  let r2 = part2 grids
+  let !r2 = part2 grids
   e <- T.getCurrentTime
 
-  putStrLn $ "Part 1: " ++ show r1 ++ "; Time: " ++ show (1e9 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime p1 p)) ++ " ns"
-  putStrLn $ "Part 2: " ++ show r2 ++ "; Time: " ++ show (1e9 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime e p1)) ++ " ns"
+  putStrLn $ "Part 1: " ++ show r1 ++ "; Time: " ++ show (1e3 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime p1 p)) ++ " ms"
+  putStrLn $ "Part 2: " ++ show r2 ++ "; Time: " ++ show (1e3 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime e p1)) ++ " ms"

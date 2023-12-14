@@ -1,3 +1,5 @@
+{-# LANGUAGE BangPatterns #-}
+
 module Main (main) where
 
 import Control.Applicative ((<**>))
@@ -51,11 +53,11 @@ main :: IO ()
 main = do
   input <- loadInput "02/input.txt"
   s <- T.getCurrentTime
-  let parsed = map (fromRight (error "Parser Error") . parse parseLine "") input
+  let !parsed = map (fromRight (error "Parser Error") . parse parseLine "") input
   p <- T.getCurrentTime
-  let r1 = part1 parsed
+  let !r1 = part1 parsed
   p1 <- T.getCurrentTime
-  let r2 = part2 parsed
+  let !r2 = part2 parsed
   e <- T.getCurrentTime
   putStrLn $ "Parsing Time: " ++ show (1000 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime p s)) ++ " ms"
   putStrLn $ "Part 1: " ++ show r1 ++ "; Time: " ++ show (1000 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime p1 p)) ++ " ms"

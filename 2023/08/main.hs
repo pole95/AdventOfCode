@@ -1,3 +1,5 @@
+{-# LANGUAGE BangPatterns #-}
+
 module Main (main) where
 
 import Data.Either (fromRight)
@@ -50,13 +52,13 @@ main = do
   let directions = head inp
   let nw = tail $ tail inp
   s <- T.getCurrentTime
-  let parsedNw = M.fromList <$> map parseNode $ nw
+  let !parsedNw = M.fromList <$> map parseNode $ nw
   p <- T.getCurrentTime
-  let r1 = part1 directions parsedNw
+  let !r1 = part1 directions parsedNw
   p1 <- T.getCurrentTime
-  let r2 = part2 directions parsedNw
+  let !r2 = part2 directions parsedNw
 
   e <- T.getCurrentTime
-  putStrLn $ "Parsing Time: " ++ show (1e9 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime p s)) ++ " ns"
-  putStrLn $ "Part 1: " ++ show r1 ++ "; Time: " ++ show (1e9 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime p1 p)) ++ " ns"
-  putStrLn $ "Part 2: " ++ show r2 ++ "; Time: " ++ show (1e9 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime e p1)) ++ " ns"
+  putStrLn $ "Parsing Time: " ++ show (1e3 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime p s)) ++ " ms"
+  putStrLn $ "Part 1: " ++ show r1 ++ "; Time: " ++ show (1e3 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime p1 p)) ++ " ms"
+  putStrLn $ "Part 2: " ++ show r2 ++ "; Time: " ++ show (1e3 * realToFrac (T.nominalDiffTimeToSeconds $ T.diffUTCTime e p1)) ++ " ms"
