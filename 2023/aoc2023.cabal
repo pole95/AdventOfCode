@@ -128,6 +128,11 @@ executable Day07
     hs-source-dirs:   07
     default-language: Haskell2010
 
+
+    -- Modules included in this executable, other than Main.
+    -- other-modules:
+
+    -- LANGUAGE extensions used by modules in 
 executable Day08
     main-is:          main.hs
 
@@ -323,3 +328,23 @@ executable Day19
         split
     hs-source-dirs:   19
     default-language: Haskell2010
+
+executable Day20
+    main-is:          main.hs
+
+    -- Modules included in this executable, other than Main.
+    -- other-modules:
+
+    -- LANGUAGE extensions used by modules in this package.
+    -- other-extensions:
+    build-depends:
+        base ^>=4.17.2.0,
+        time,
+        containers,
+        parsec,
+        mtl,
+        split
+    hs-source-dirs:   20
+    default-language: Haskell2010
+
+
